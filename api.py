@@ -96,7 +96,7 @@ def is_google_sheets(user_agent):
 
 def make_toggl_link(start, end, project_id=None, task_id=None):
     """https://track.toggl.com/reports/detailed/2668357/from/2020-12-01/projects/165549143/to/2020-12-16/without/"""
-    url = 'https:/track.toggl.com/reports/detailed/%s/from/%s/%s/%s/to/%s/without/'
+    url = 'https://track.toggl.com/reports/detailed/%s/from/%s/%s/%s/to/%s/without/'
     if project_id:
         return url % (
                 WORKSPACE_ID,
