@@ -91,7 +91,7 @@ def to_units(seconds, units):
 
 def is_google_sheets(user_agent):
     """User-Agent: Mozilla/5.0 (compatible; GoogleDocs; apps-spreadsheets; +http://docs.google.com)"""
-    return 'apps-spreadsheets' in user_agent
+    return 'apps-spreadsheets' in user_agent or 'Google-Apps-Script' in user_agent
 
 
 def make_toggl_link(start, end, project_id=None, task_id=None):
@@ -136,6 +136,9 @@ def effort():
     if project_id:
         project_id = int(project_id)
         toggl_link = make_toggl_link(start, end, project_id=project_id)
+
+    if request.args.get('togglLink', False):
+        return toggl_link
 
     if task_id and project_id:
         return Response('Bad request: task and project both specified', 400)
